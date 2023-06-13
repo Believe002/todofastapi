@@ -1,13 +1,16 @@
 #  @bekbrace
 #  FARMSTACK Tutorial - Sunday 13.06.2021
 
+import os
 import motor.motor_asyncio
 from model import Todo
+from dotenv import load_dotenv
+load_dotenv()
 
 
-uri="mongodb+srv://vishwaas:Simform%40123@cluster1.himxh2y.mongodb.net/mydatabase?retryWrites=true&w=majority"
+# uri="mongodb+srv://vishwaas:Simform%40123@cluster1.himxh2y.mongodb.net/mydatabase?retryWrites=true&w=majority"
 # client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
-client = motor.motor_asyncio.AsyncIOMotorClient(uri)
+client = motor.motor_asyncio.AsyncIOMotorClient(os.getenv('DATABASEURL'))
 
 database = client.TodoList
 collection = database.todo
