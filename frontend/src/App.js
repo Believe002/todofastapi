@@ -15,10 +15,11 @@ function App() {
   const [desc, setDesc] = useState('')
   
     
+let backend=process.env.BACKENDURL;
 
   // Read all todos
   useEffect(() => {
-    axios.get('http://localhost:8000/api/todo')
+    axios.get(backend)
       .then(res => {
         setTodoList(res.data)
       })
@@ -26,7 +27,7 @@ function App() {
 
   // Post a todo
   const addTodoHandler = () => {
-    axios.post('http://localhost:8000/api/todo/', { 'title': title, 'description': desc })
+    axios.post(backend, { 'title': title, 'description': desc })
       .then(res => console.log(res))
 };
 

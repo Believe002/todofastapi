@@ -3,9 +3,11 @@
 import axios from 'axios'
 import React from 'react'
 
+let api=process.env.BACKENDURL
+
 function TodoItem(props) {
     const deleteTodoHandler = (title) => {
-    axios.delete(`http://localhost:8000/api/todo/${title}`)
+    axios.delete(`${api}${title}`)
         .then(res => console.log(res.data)) }
   
     return (
